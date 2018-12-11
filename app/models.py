@@ -2,7 +2,7 @@ from flask import current_app,request
 from . import db, login_manager
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin, AnonymousUserMixin, current_user
-from wtforms.validators import Email
+# from wtforms.validators import Email
 from itsdangerous import JSONWebSignatureSerializer as Serializer
 import base64
 
@@ -59,6 +59,26 @@ class Teacher(db.Model):
     birth = db.Column(db.Integer)
     
     comments = db.relationship('Comment', backref = 'teacher', lazy='dynamic',cascade='all')
+
+    def set_name(self,name):
+        self.name = name
+
+    def set_research_direction(self,rd):
+        self.research_direction = rd
+
+    def set_photo(self,photo):
+        self.photo = photo
+
+    def set_sex(self,sex):
+        self.set = sex
+
+    def set_birth(self,birth):
+        self.birth = birth
+
+    def __repr__(self):
+        return f'{str(self.name)} {str(self.school)} {str(self.research_direction)}'
+
+
 
 class Comment(db.Model):
     __tablename__ = 'comments'
