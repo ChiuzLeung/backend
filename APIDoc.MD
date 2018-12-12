@@ -3,8 +3,8 @@
 # 大学列表
 
 | URL | Header | Method |
-| --- | --- |
-| /api/universities/ | 无 | GET | 
+| ------ | ------ | ------ |
+| /api/universities/ | 无 | GET |
 
 **Responses Body**
 ```
@@ -15,9 +15,11 @@
 
 # 获取登录所需信息
 
-|URL |Header|Method|
-|---|---|
-|/api/universities/schema/|无|POST|
+
+| URL | Header | Method |
+| ------ | ------ | ------ |
+| /api/universities/schema/ | 无 | POST |
+
 
 **Request Body**
 
@@ -39,7 +41,7 @@
 # 预获取验证码(若需要)
 
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/universities/pre_verify/|无|POST|
 
 **Request Body**
@@ -59,8 +61,9 @@
 # 获取验证码(若需要)
 
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/universities/verify/|无|POST|
+
 **Request Body**
 ```
 {
@@ -74,7 +77,7 @@
 
 # 登录
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/login/|无|POST|
 
 **Request Body**
@@ -116,8 +119,9 @@ OR
 
 # 添加老师
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/teacher/|Authorization:token|POST|
+
 **Request Body**
 ```
 {
@@ -153,7 +157,7 @@ OR
 
 # 评论老师
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/teacher/`<tid>`/|Authorization:token|POST|
 
 **Request Body**
@@ -187,8 +191,10 @@ Status Code:403
 
 # 获取老师列表
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/teacher/`<schoolname>`/page/`<page_num>`/|无|GET|
+
+
 schoolname: 例如`华中师范大学`
 page_num: 从1开始
 
@@ -211,8 +217,10 @@ page_num: 从1开始
 
 # 获取有关老师评论
 |URL |Header|Method|
-|---|---|
+| ------ | ------ | ------ |
 |/api/teacher/`<tid>`/info/page/`<page_num>`/|无|GET|
+
+
 tid: 老师id
 page_num: 页码从1开始
 **Response Body**
