@@ -100,6 +100,78 @@ def get_teacher_list(schoolname, page_num):
         }),200
 
 
+# 按照老师姓名查询
+@api.route("/teacher/name/<teachername>/", methods = ['GET'])
+def get_teacher_by_name(teachername):
+    teachers = [ {
+        "tid": teacher.id,
+        "school": teacher.school,
+        "name": teacher.name,
+        "photo": teacher.photo, 
+        "direction": teacher.research_direction,
+        "score": teacher.score, 
+        "sex": teacher.sex,
+        "birthday": teacher.birth
+        } for teacher in Teacher.query.filter_by(name=teachername).all()
+        ]
+    return jsonify({
+        "teachers": teachers
+        }), 200
+
+# 按照老师学校查询
+@api.route("/teacher/school/<schoolname>/", methods = ['GET'])
+def get_teacher_by_school(schoolname):
+    teachers = [ {
+        "tid": teacher.id,
+        "school": teacher.school,
+        "name": teacher.name,
+        "photo": teacher.photo, 
+        "direction": teacher.research_direction,
+        "score": teacher.score, 
+        "sex": teacher.sex,
+        "birthday": teacher.birth
+        } for teacher in Teacher.query.filter_by(school=schoolname).all()
+        ]
+    return jsonify({
+        "teachers": teachers
+        }), 200
+
+# 按照老师性别查询
+@api.route("/teacher/gender/<gender>/", methods = ['GET'])
+def get_teacher_by_gender(gender):
+    teachers = [ {
+        "tid": teacher.id,
+        "school": teacher.school,
+        "name": teacher.name,
+        "photo": teacher.photo, 
+        "direction": teacher.research_direction,
+        "score": teacher.score, 
+        "sex": teacher.sex,
+        "birthday": teacher.birth
+        } for teacher in Teacher.query.filter_by(sex=gender).all()
+        ]
+    return jsonify({
+        "teachers": teachers
+        }), 200
+
+# 按照老师专业查询
+@api.route("/teacher/major/<major>/", methods = ['GET'])
+def get_teacher_by_major(major):
+    teachers = [ {
+        "tid": teacher.id,
+        "school": teacher.school,
+        "name": teacher.name,
+        "photo": teacher.photo, 
+        "direction": teacher.research_direction,
+        "score": teacher.score, 
+        "sex": teacher.sex,
+        "birthday": teacher.birth
+        } for teacher in Teacher.query.filter_by(research_direction=major).all()
+        ]
+    return jsonify({
+        "teachers": teachers
+        }), 200
+
 # 获取有关老师评论
 @api.route("/teacher/<int:tid>/info/page/<int:page_num>/", methods = ['GET'])
 def get_teacher(tid, page_num):

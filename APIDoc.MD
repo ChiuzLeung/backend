@@ -25,7 +25,7 @@
 
 ```
 {
-    "university_name": "华中师范大学"
+    "university_name": "CCNU"
 }
 ```
 
@@ -38,7 +38,7 @@
     "verify": 1 or 0
 }
 ```
-# 预获取验证码(若需要)
+# 预获取验证码(若需要)（目前未实现）
 
 |URL |Header|Method|
 | ------ | ------ | ------ |
@@ -58,7 +58,7 @@
 }
 ```
 
-# 获取验证码(若需要)
+# 获取验证码(若需要)（目前未实现）
 
 |URL |Header|Method|
 | ------ | ------ | ------ |
@@ -83,11 +83,11 @@
 **Request Body**
 ```
 {
-    "university_name":"string",
+    "university_name":"string", //CCNU, WUST
     "login_info":{
         "username":"xxxxx",  //大学学号
         "password":"xxxxx",  // 教务处密码
-        "verify":"string"   // 若有则填,否则为空
+        "verify": int   // 若有则填,否则为空
     }
 }
 ```
@@ -126,9 +126,9 @@ OR
 ```
 {
     "teacher_name":string,
-    "research_direction":string,
+    "research_direction":string, //CS, EE and so on
     "photo_url":string,  //可省略，默认为王攀www
-    "sex":"男" or "女",
+    "sex":string, //female OR male
     "birth": int    //年份
 }
 ```
@@ -216,6 +216,7 @@ page_num: 从1开始
 
 
 # 获取有关老师评论
+
 |URL |Header|Method|
 | ------ | ------ | ------ |
 |/api/teacher/`<tid>`/info/page/`<page_num>`/|无|GET|
@@ -223,7 +224,7 @@ page_num: 从1开始
 
 tid: 老师id
 page_num: 页码从1开始
-**Response Body**
+**response body**
 ```
     "allpages": integer,
     "teacher":{
@@ -241,3 +242,129 @@ page_num: 页码从1开始
         }, ... ...
     ]
 ```
+
+# 按照老师姓名查询
+
+|URL |Header|Method|
+| ------ | ------ | ------ |
+|/api/teacher/name/<teachername>/|无|GET|
+
+teachername: 教师姓名，string
+
+**response body**
+```
+    "teacher":{
+        "tid":int,
+        "school":string,
+        "name":string,
+        "photo":string,
+        "direction":string,
+        "score":float,
+        "sex":string
+        "birthday":string
+    },
+```
+
+**Status Code**
+200 查询成功
+
+# 按照老师学校查询（未测，武理无法登陆）
+
+|URL |Header|Method|
+| ------ | ------ | ------ |
+|/api/teacher/school/<teacherschool>/|无|GET|
+
+teacherschool: 教师姓名，可包含空格的字符串
+
+**response body**
+```
+    "teacher":{
+        "tid":int,
+        "school":string,
+        "name":string,
+        "photo":string,
+        "direction":string,
+        "score":float,
+        "sex":string
+        "birthday":string
+    },
+```
+
+**Status Code**
+200
+
+# 按照老师学校查询（武理无法登陆，未测）
+
+|URL |Header|Method|
+| ------ | ------ | ------ |
+|/api/teacher/school/<teacherschool>/|无|GET|
+
+teacherschool: 教师学校，目前实现CCNU
+
+**response body**
+```
+    "teacher":{
+        "tid":int,
+        "school":string,
+        "name":string,
+        "photo":string,
+        "direction":string,
+        "score":float,
+        "sex":string
+        "birthday":string
+    },
+```
+
+**Status Code**
+200 查询成功
+
+# 按照老师性别查询
+
+|URL |Header|Method|
+| ------ | ------ | ------ |
+|/api/teacher/gender/<gender>/|无|GET|
+
+gender: female OR male
+
+**response body**
+```
+    "teacher":{
+        "tid":int,
+        "school":string,
+        "name":string,
+        "photo":string,
+        "direction":string,
+        "score":float,
+        "sex":string
+        "birthday":string
+    },
+```
+
+**Status Code**
+200 查询成功
+
+
+# 按照老师专业查询
+
+|URL |Header|Method|
+| ------ | ------ | ------ |
+|/api/teacher/major/<major>/|无|GET|
+
+major: CS EE and so on
+
+**response body**
+```
+    "teacher":{
+        "tid":int,
+        "school":string,
+        "name":string,
+        "photo":string,
+        "direction":string,
+        "score":float,
+        "sex":string
+        "birthday":string
+    },
+```
+
+**Status Code**
+200 查询成功

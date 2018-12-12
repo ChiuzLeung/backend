@@ -17,7 +17,7 @@ def get_unis():
 @api.route("/universities/schema/", methods = ['POST'])
 def get_login_schema():
     if request.method == 'POST':
-        uni_name = request.get_json().get('university_name')
+        uni_name = request.get_json().get('name')
         uni = universities_auth.get(uni_name)
         return jsonify(uni.schema)
 
