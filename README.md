@@ -16,7 +16,7 @@ $ brew install pytesser
 ## Install requirements(Python Development Environment)
 
 ```sh
-$ pip install -r requirements.txt
+$ pip3 install --user -r requirements.txt
 ```
 
 ## Run Virtual Environment
@@ -28,9 +28,9 @@ $ virtualenv venv && source venv/bin/activate
 ## Create Database
 
 ```sh
-$ python3 manager.py db init
-$ python3 manager.py db migrate
-$ python3 manager.py db upgrade
+$ python3 manage.py db init
+$ python3 manage.py db migrate
+$ python3 manage.py db upgrade
 ```
 
 ## Register Universities
