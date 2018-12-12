@@ -36,7 +36,7 @@ $ python3 manage.py db upgrade
 ## Register Universities
 
 ```sh
-$ python3 manager.py register
+$ python3 manage.py register
 ```
 
 # 其他学校接入
